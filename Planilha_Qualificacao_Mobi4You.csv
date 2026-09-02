@@ -1,0 +1,4 @@
+﻿Data e Hora,Status do Lead,Nome,WhatsApp / Telefone,E-mail,Perfil,Área do Projeto (m²),Tipo de Imóvel,Etapa do Projeto,Necessidade Principal,Previsão de Compra,Processo de Compra,Status Comercial,Observações
+02/09/2026 12:30:00,Qualificação Concluída,Carlos Eduardo Mendes,(11) 98765-4321,carlos.mendes@arquitetura.com.br,Arquiteto / Especificador,301 a 600 m²,Edifício corporativo / condomínio empresarial,Em desenvolvimento,,,,Novo,Exemplo de lead arquiteto
+02/09/2026 12:35:10,Qualificação Concluída,Mariana Silva,(11) 97654-3210,mariana.silva@empresa.com.br,Facilities / Comprador,,,,Montagem de novo escritório,Próximos 30 dias,Cotação com fornecedores homologados,Em Contato,Exemplo de lead facilities
+02/09/2026 12:40:00,Início (Etapa 1),Roberto Souza,(11) 99123-4567,roberto@email.com,,,,,,,Lead não concluiu,Iniciou cadastro mas não finalizou

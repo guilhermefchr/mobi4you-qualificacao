@@ -1,0 +1,639 @@
+/* ==========================================================================
+   MOBI4YOU - Qualificação de Mobiliário Corporativo
+   Design Moderno & Minimalista - Alto Contraste com Fundo Escuro
+   ========================================================================== */
+
+:root {
+  /* Cores Oficiais e Contraste */
+  --primary: #D8242A;
+  --primary-hover: #B9171C;
+  --primary-subtle: #FFF8F8;
+  --bg-page: #121316;
+  --card-bg: #FFFFFF;
+  
+  --text-page-title: #FFFFFF;
+  --text-page-sub: #94A3B8;
+  
+  --text-card-title: #0F172A;
+  --text-card-sub: #64748B;
+  --text-card-main: #1E293B;
+  
+  --border-color: #E2E8F0;
+  --badge-bg: #F1F5F9;
+  --badge-text: #475569;
+  
+  --radius-card: 20px;
+  --radius-button: 8px;
+  --radius-option: 12px;
+  
+  --shadow-card: 0 20px 45px -10px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --shadow-button: 0 4px 12px rgba(216, 36, 42, 0.28);
+  --transition: 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #0B0C10;
+  color: var(--text-card-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 44px 20px 32px 20px;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Iluminação Ambiente Realista por detrás do Card */
+.ambient-backlight {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  width: 820px;
+  max-width: 95vw;
+  height: 640px;
+  background: radial-gradient(
+    ellipse 65% 55% at 50% 50%,
+    rgba(216, 36, 42, 0.42) 0%,
+    rgba(216, 36, 42, 0.22) 38%,
+    rgba(255, 255, 255, 0.05) 58%,
+    transparent 74%
+  );
+  filter: blur(60px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Wrapper Central */
+.main-wrapper {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Cabeçalho da Marca no Fundo Escuro */
+.brand-header {
+  text-align: center;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-container {
+  margin-bottom: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brand-logo {
+  max-height: 52px;
+  width: auto;
+  max-width: 260px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
+}
+
+.brand-title {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--text-page-title);
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  text-wrap: balance;
+}
+
+.brand-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-page-sub);
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+/* Card Principal Elevado com Glow Integrado */
+.form-card {
+  width: 100%;
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  box-shadow: 
+    0 0 50px -5px rgba(216, 36, 42, 0.32),
+    0 25px 60px -15px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.15);
+  padding: 36px 40px 32px 40px;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+/* Seção de Progresso Interna do Card */
+.card-progress-section {
+  margin-bottom: 28px;
+}
+
+.card-progress-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.step-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.step-profile-label {
+  font-size: 0.82rem;
+  color: var(--text-card-sub);
+  font-weight: 500;
+}
+
+.card-progress-track {
+  width: 100%;
+  height: 3px;
+  background: #EEF2F6;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-progress-fill {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 2px;
+  transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Formulário e Etapas com Animação */
+#qualificacaoForm {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.step-card {
+  display: none;
+  opacity: 0;
+  transform: translateY(12px) scale(0.99);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-direction: column;
+  flex: 1;
+}
+
+.step-card.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.step-title-area {
+  margin-bottom: 22px;
+}
+
+.step-title-area h2 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text-card-title);
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.step-subheading {
+  font-size: 0.92rem;
+  color: var(--text-card-sub);
+  margin-top: 8px;
+  line-height: 1.5;
+  text-wrap: balance;
+}
+
+/* Corpo do Formulário (Etapa 1) */
+.form-body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--text-card-title);
+  background: #FFFFFF;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.form-group input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3.5px rgba(216, 36, 42, 0.12);
+}
+
+.form-group input::placeholder {
+  color: #94A3B8;
+}
+
+/* Termo de Privacidade Minimalista com Link */
+.privacy-disclaimer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  font-size: 0.77rem;
+  color: #64748B;
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+.privacy-link {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 600;
+  transition: color var(--transition);
+}
+
+.privacy-link:hover {
+  color: var(--primary-hover);
+}
+
+/* Grid de Opções (Estilo Typeform Minimalista) */
+.options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.option-card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 14px 18px;
+  background: #FFFFFF;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-option);
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: all var(--transition);
+  position: relative;
+  user-select: none;
+}
+
+.option-card:hover {
+  background: #FAFAFA;
+  border-color: #CBD5E1;
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.option-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-right: 16px;
+  flex-shrink: 0;
+  transition: all var(--transition);
+}
+
+.option-text {
+  flex: 1;
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: var(--text-card-main);
+  line-height: 1.35;
+}
+
+.option-check {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #FFFFFF;
+  margin-left: 12px;
+  flex-shrink: 0;
+  animation: popIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.option-check svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Estado Selecionado da Opção */
+.option-card.selected {
+  background: var(--primary-subtle);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--primary);
+  transform: translateX(4px);
+}
+
+.option-card.selected .option-badge {
+  background: var(--primary);
+  color: #FFFFFF;
+}
+
+.option-card.selected .option-text {
+  color: var(--text-card-title);
+  font-weight: 600;
+}
+
+.option-card.selected .option-check {
+  display: flex;
+}
+
+/* Botões de Ação */
+.step-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 12px;
+}
+
+.step-actions.right-align {
+  justify-content: flex-end;
+}
+
+.step-actions.center-actions {
+  justify-content: center;
+  gap: 14px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  border-radius: var(--radius-button);
+  font-size: 0.92rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  gap: 8px;
+  transition: all var(--transition);
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #FFFFFF;
+  box-shadow: var(--shadow-button);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 6px 16px rgba(216, 36, 42, 0.38);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: #F1F5F9;
+  color: #475569;
+}
+
+.btn-secondary:hover {
+  background: #E2E8F0;
+  color: #1E293B;
+}
+
+.btn-primary:disabled,
+.btn-primary.btn-disabled {
+  opacity: 0.38;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.btn-icon,
+.btn-icon-left {
+  width: 18px;
+  height: 18px;
+}
+
+@keyframes shakeCard {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.shake-card {
+  animation: shakeCard 0.35s ease-in-out;
+}
+
+/* ==========================================================================
+   PÁGINA FINAL APRIMORADA
+   ========================================================================== */
+
+.success-icon-badge {
+  width: 58px;
+  height: 58px;
+  background: #DEF7EC;
+  color: #03543F;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 16px rgba(4, 108, 78, 0.15);
+  animation: popIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.success-icon-badge svg {
+  width: 30px;
+  height: 30px;
+}
+
+.summary-box {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 18px 24px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid #EEF2F6;
+  font-size: 0.88rem;
+}
+
+.summary-item:last-child {
+  border-bottom: none;
+}
+
+.summary-label {
+  color: var(--text-card-sub);
+  font-weight: 500;
+}
+
+.summary-value {
+  color: var(--text-card-title);
+  font-weight: 600;
+  text-align: right;
+}
+
+/* Botão de Destaque WhatsApp na Conclusão */
+.btn-whatsapp {
+  background: var(--primary);
+  color: #FFFFFF;
+  font-size: 0.98rem;
+  padding: 13px 30px;
+  border-radius: var(--radius-button);
+  gap: 10px;
+  box-shadow: 0 4px 16px rgba(216, 36, 42, 0.35);
+}
+
+.btn-whatsapp:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 6px 22px rgba(216, 36, 42, 0.48);
+  transform: translateY(-2px);
+}
+
+.whatsapp-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Rodapé Externo com Dica de Teclado no Fundo Escuro */
+.app-keyboard-footer {
+  margin-top: 24px;
+  font-size: 0.82rem;
+  color: var(--text-page-sub);
+  text-align: center;
+}
+
+kbd {
+  background: #1E2026;
+  border: 1px solid #333842;
+  border-radius: 5px;
+  padding: 2px 7px;
+  font-family: inherit;
+  font-weight: 600;
+  color: #F1F5F9;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Animações */
+@keyframes popIn {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsividade Mobile */
+@media (max-width: 640px) {
+  body {
+    padding: 24px 14px;
+  }
+
+  .brand-title {
+    font-size: 1.35rem;
+  }
+
+  .brand-subtitle {
+    font-size: 0.88rem;
+  }
+
+  .form-card {
+    padding: 24px 18px 20px 18px;
+    min-height: auto;
+  }
+
+  .step-title-area h2 {
+    font-size: 1.25rem;
+  }
+
+  .app-keyboard-footer {
+    display: none;
+  }
+
+  .privacy-disclaimer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .summary-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .summary-value {
+    text-align: left;
+  }
+
+  .btn-whatsapp {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 0.92rem;
+  }
+}
