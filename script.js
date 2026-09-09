@@ -4,8 +4,8 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Número de WhatsApp Oficial extraído do site da Mobi4You
-  const WHATSAPP_NUMBER = '5511976335044';
+  // Número de WhatsApp Oficial para redirecionamento final (11 94515-1114)
+  const WHATSAPP_NUMBER = '5511945151114';
 
   // URL do Webhook do Make / Integromat (Conectado para automação)
   const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/d2tncbssc7axio1b1vyhdc9vaspsc6ds';
